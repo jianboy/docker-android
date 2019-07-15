@@ -4,13 +4,13 @@ android 系统源码编译，android源码特别大，所以不要放到镜像�
 
 **系统要求**
 
-docker中Ubuntu18
-内存16G
-磁盘200G SSD
+* docker中Ubuntu18
+* 内存16G
+* 磁盘200G SSD
 
 ## 使用
 
-1、启动编译系统，下面通过docker-compose启动该。
+1、启动编译系统（略），下面通过docker-compose启动。
 
 ```
 docker run --name aosp6 -it android-source /bin/bash
@@ -19,7 +19,13 @@ docker run --name aosp6 -it android-source /bin/bash
 
 2、下载源码，启动编译系统
 
-下载源码可能耗时一两天，大概50G，解压80G，在aosp还原则会120G左右。这个可以直接插上已经下载好Android系统源码的磁盘，然后把指定目录挂载到docker精选即可。
+下载源码可能耗时一两天，大概50G，解压80G，在aosp还原则会120G左右。
+
+```
+sh tools/download_android_repo.sh
+```
+
+这个可以直接插上已经下载好Android系统源码的磁盘，然后把指定目录挂载到docker精选即可。
 
 ```
 cd xx/aosp
@@ -29,10 +35,7 @@ docker-composer up -d
 3、编译源码
 
 ```
-source build/envsetup.sh
-export USER=$(whoami)
-lunch aosp_hammerhead-eng
-make -j16
+sh tools/build_src.sh
 
 ```
 
