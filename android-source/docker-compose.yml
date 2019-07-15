@@ -1,0 +1,7 @@
+version: '2.1'
+
+services:
+  android-source:
+    image: android-source
+    volumes:
+      - .:/root/aosp
