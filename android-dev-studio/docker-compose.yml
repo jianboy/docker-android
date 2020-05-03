@@ -1,0 +1,5 @@
+version: '2.1'
+
+services:
+  docker-android-sdk:
+    image: docker-android-sdk
